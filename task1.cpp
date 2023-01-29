@@ -1,12 +1,37 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 
 using namespace std;
+
+
+void logs(int command,int way,int player){
+    string log;
+    log += to_str(command);
+}
+
+
+
 void zamena(int* command){
  int zamena;
     int nakogo;
     char selection;
+   bool player=true;
     cout << "кого вы хотите заменить - ";
         cin >> zamena;
+        
+        do{
+        for(i = 0;i < 6;i++){
+            if(command[i] == zamena){
+                player = false;
+                break;
+            }
+        }
+            if(player){
+                cout << "Invalid player!" << endl;
+            }
+        }while(player);
+        
      cout << "кем вы хотите заменить - ";    
          cin >> nakogo;
           cout << "подтвердите E - ";
@@ -34,7 +59,7 @@ void perexod(int* oneteam){
 }
 
 
-void two(int* oneteam, int* twoteam)
+void zadacha2(int* oneteam, int* twoteam)
 {
     for(int i=0 ;i <3;i++){
         cout<<oneteam[i]<<" ";
@@ -80,7 +105,7 @@ void zadacha1 (int* oneteam, int* twoteamint, &winoneteam , int& wintwoteam){
             
            printf("Счет матча %d (%d) – %d (%d).",win1, win2, count1, count2);
            
-            two (oneteam, twoteam);
+            zadacha2 (oneteam, twoteam);
             
             cout << "кто победит 1 команда или команда 2,\n3 - замена] - ";
             cin >> whowiner;
@@ -89,7 +114,7 @@ void zadacha1 (int* oneteam, int* twoteamint, &winoneteam , int& wintwoteam){
             if (whowiner == 3) {
                 int command = 0;
 
-                cout << "what command? - ";
+                cout << "какая команда? - ";
                 cin >> command;
 
                 if (command == 1) {
@@ -100,21 +125,40 @@ void zadacha1 (int* oneteam, int* twoteamint, &winoneteam , int& wintwoteam){
                 }
                 continue;
             }
-            
-          
            
             cout<<"выйграл розыгрыш";
             cin>>winer;
+            
             cout<<"выйграл \n 1-Атака \n 2-Блок \n 3-Подача \n 4-Ошибка";
             cin>>way;
-            if (way!=4){
-                cout<<"какой игрок выйграл";
-                cin>>player;
-          
-             
+            
+            if (whowiner==1){
+                count1++
+         perexod(oneteam);
             }
-        
+            else{
+                  count2++
+                 perexod(twoteam);
+            }
+            if(last_win != who_win){ 
+             if (whowiner==1){
+                count1++
+            }
+            else{
+                  count2++
+            }
+            }
+            else{
+            if(count1>count2){
+                win1++
+            }
+            else{
+                win2++
+            }
+            }
         }
+        
+        
       }
     
     }
@@ -124,9 +168,9 @@ int main()
 {
    int oneteam[6] = {21,2,31,43,23,11};
    int twoteam[6] = {22,123,1,55,99,10};
-   two(oneteam,twoteam);
+   zadacha2(oneteam,twoteam);
    perexod(oneteam);
-   two(oneteam,twoteam);
-   int winoneteam,wintwoteam;
+   zadacha2(oneteam,twoteam);
+  
     
 }
