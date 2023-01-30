@@ -135,7 +135,7 @@ void zadacha1(int* oneteam, int* twoteam) {
 
             zadacha2(oneteam, twoteam);
 
-            cout << "кто победит 1 команда или команда 2,\n3 - замена] - ";
+            cout << "кто победит 1 команда или команда 2,\n3 - замена - ";
             cin >> whowiner;
             cout << endl;
 
